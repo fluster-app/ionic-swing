@@ -9,6 +9,11 @@ export * from './angular2-swing/swing-card-component';
 
 export * from './angular2-swing/swing';
 
+export * from './swing/card';
+export * from './swing/direction';
+export * from './swing/stack';
+export * from './swing/utilities';
+
 @NgModule({
   imports: [
     CommonModule
