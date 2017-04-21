@@ -1,35 +1,36 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
-import { SampleDirective } from './sample.directive';
-import { SamplePipe } from './sample.pipe';
-import { SampleService } from './sample.service';
 
-export * from './sample.component';
-export * from './sample.directive';
-export * from './sample.pipe';
-export * from './sample.service';
+import {SwingStackComponent} from './angular2-swing/swing-stack-component';
+import {SwingCardComponent} from './angular2-swing/swing-card-component';
+
+export * from './angular2-swing/swing-stack-component';
+export * from './angular2-swing/swing-card-component';
+
+export * from './angular2-swing/swing';
+
+export * from './swing/card';
+export * from './swing/direction';
+export * from './swing/stack';
+export * from './swing/utilities';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
+    SwingStackComponent,
+    SwingCardComponent
   ],
   exports: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
+    SwingStackComponent,
+    SwingCardComponent
   ]
 })
-export class SampleModule {
+export class IonicSwingModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SampleModule,
-      providers: [SampleService]
+      ngModule: IonicSwingModule
     };
   }
 }
