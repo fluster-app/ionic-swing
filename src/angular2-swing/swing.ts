@@ -12,7 +12,7 @@ export interface ThrowEvent {
      * The direction in which the element is being dragged: Card.DIRECTION_LEFT
      * or Card.DIRECTION_RIGHT
      */
-    throwDirection: Direction;
+    throwDirection: any;
 }
 
 export interface DragEvent {
@@ -28,7 +28,7 @@ export interface DragEvent {
     /**
      * Only available when the event is dragmove
      */
-    throwDirection?: Direction;
+    throwDirection?: any;
     /**
      * Only available when the event is dragmove
      */
@@ -138,10 +138,3 @@ export interface StackConfig {
     transform?: (element: HTMLElement, x: number, y: number, r: number) => void;
 }
 
-export interface Direction {
-    DOWN;
-    INVALID;
-    LEFT;
-    RIGHT;
-    UP;
-}
