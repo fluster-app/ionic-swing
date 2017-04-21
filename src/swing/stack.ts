@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import Sister from 'sister';
 import rebound from 'rebound';
+
 import Card from './card';
 
 /**

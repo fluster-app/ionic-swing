@@ -3,7 +3,7 @@ import Sister from 'sister';
 import rebound from 'rebound';
 import vendorPrefix from 'vendor-prefix';
 import raf from 'raf';
-import Direction from './Direction';
+import Direction from './direction';
 
 import {
     elementChildren,
