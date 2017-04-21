@@ -1,6 +1,6 @@
 # ionic-swing
 
-ionic-swing is a fork of the following projects intended to add the swipeable cards capatibilies to Ionic (> 2)
+ionic-swing is a fork of the following projects intended to add the swipeable cards capatibilies to Ionic (>= 2)
 
 - swing.js (version 4.2.0, https://github.com/gajus/swing)
 - angular2-swing (version 0.11.0, https://github.com/ksachdeva/angular2-swing)
@@ -11,7 +11,7 @@ Therefore I decided to create this fork with the goal to make a version of swing
 
 ## Current status
 
-This fork project is in beta version but seems to work.
+This fork project is in beta version but seems to work (tested with Ionic 3.0.1).
 
 Possible improvements not yet done:
 
