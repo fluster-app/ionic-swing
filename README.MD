@@ -67,6 +67,10 @@ To lint all `*.ts` files:
 $ npm run lint
 ```
 
+## Side notes
+
+Project structure created with https://github.com/jvandemo/generator-angular2-library
+
 ## License
 
 MIT © [David Dal Busco](mailto:david.dalbusco@outlook.com)
