@@ -4,12 +4,14 @@ import rebound from 'rebound';
 import vendorPrefix from 'vendor-prefix';
 import raf from 'raf';
 import Direction from './Direction';
+
 import {
     elementChildren,
     isTouchDevice
 } from './utilities';
 
 declare var global: any;
+declare var Hammer: any;
 
 /**
  * @param {number} fromX

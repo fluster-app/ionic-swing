@@ -7,7 +7,7 @@ import Card from './card';
  * @param {Object} config Stack configuration.
  * @returns {Object} An instance of Stack object.
  */
-const Stack = (config) => {
+export const Stack = (config) => {
     let eventEmitter;
     let index;
     let springSystem;
