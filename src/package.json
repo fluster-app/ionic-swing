@@ -1,0 +1,26 @@
+{
+  "name": "ionic-swing",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peterpeterparker/ionic-swing.git"
+  },
+  "author": {
+    "name": "David Dal Busco",
+    "email": "david.dalbusco@outlook.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peterpeterparker/ionic-swing.git/issues"
+  },
+  "module": "ionic-swing.js",
+  "typings": "ionic-swing.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
