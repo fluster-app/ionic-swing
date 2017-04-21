@@ -9,6 +9,8 @@ import {
     isTouchDevice
 } from './utilities';
 
+declare var global: any;
+
 /**
  * @param {number} fromX
  * @param {number} fromY
@@ -28,6 +30,150 @@ const computeDirection = (fromX, fromY, allowedDirections) => {
     }
 
     return direction;
+};
+
+/**
+ * Prepend element to the parentNode.
+ *
+ * This makes the element last among the siblings.
+ *
+ * Invoked when card is added to the stack (when prepend is true).
+ *
+ * @param {HTMLElement} element The target element.
+ * @return {undefined}
+ */
+const prependToParent = (element) => {
+    const parentNode = element.parentNode;
+
+    parentNode.removeChild(element);
+    parentNode.insertBefore(element, parentNode.firstChild);
+};
+
+/**
+ * Append element to the parentNode.
+ *
+ * This makes the element first among the siblings. The reason for using
+ * this as opposed to zIndex is to allow CSS selector :nth-child.
+ *
+ * Invoked in the event of mousedown.
+ * Invoked when card is added to the stack.
+ *
+ * @param {HTMLElement} element The target element.
+ * @returns {undefined}
+ */
+const appendToParent = (element) => {
+    const parentNode = element.parentNode;
+    const siblings = elementChildren(parentNode);
+    const targetIndex = siblings.indexOf(element);
+
+    if (targetIndex + 1 !== siblings.length) {
+        parentNode.removeChild(element);
+        parentNode.appendChild(element);
+    }
+};
+
+/**
+ * Uses CSS transform to translate element position and rotation.
+ *
+ * Invoked in the event of `dragmove` and every time the physics solver is triggered.
+ *
+ * @param {HTMLElement} element
+ * @param {number} coordinateX Horizontal offset from the startDrag.
+ * @param {number} coordinateY Vertical offset from the startDrag.
+ * @param {number} rotation
+ * @returns {undefined}
+ */
+const transform = (element, coordinateX, coordinateY, rotation) => {
+    element.style[vendorPrefix('transform')] = 'translate3d(0, 0, 0) translate(' + coordinateX + 'px, ' + coordinateY + 'px) rotate(' + rotation + 'deg)';
+};
+
+/**
+ * Returns a value between 0 and 1 indicating the completeness of the throw out condition.
+ *
+ * Ration of the absolute distance from the original card position and element width.
+ *
+ * @param {number} xOffset Distance from the dragStart.
+ * @param {number} yOffset Distance from the dragStart.
+ * @param {HTMLElement} element Element.
+ * @returns {number}
+ */
+const throwOutConfidence = (xOffset, yOffset, element) => {
+    const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
+    const yConfidence = Math.min(Math.abs(yOffset) / element.offsetHeight, 1);
+
+    return Math.max(xConfidence, yConfidence);
+};
+
+/**
+ * Determines if element is being thrown out of the stack.
+ *
+ * Element is considered to be thrown out when throwOutConfidence is equal to 1.
+ *
+ * @param {number} xOffset Distance from the dragStart.
+ * @param {number} yOffset Distance from the dragStart.
+ * @param {HTMLElement} element Element.
+ * @param {number} throwOutConfidence config.throwOutConfidence
+ * @returns {boolean}
+ */
+const isThrowOut = (xOffset, yOffset, element, throwOutConfidence) => {
+    return throwOutConfidence === 1;
+};
+
+/**
+ * Calculates a distances at which the card is thrown out of the stack.
+ *
+ * @param {number} min
+ * @param {number} max
+ * @returns {number}
+ */
+const throwOutDistance = (min, max) => {
+    return _.random(min, max);
+};
+
+/**
+ * Calculates rotation based on the element x and y offset, element width and maxRotation variables.
+ *
+ * @param {number} coordinateX Horizontal offset from the startDrag.
+ * @param {number} coordinateY Vertical offset from the startDrag.
+ * @param {HTMLElement} element Element.
+ * @param {number} maxRotation
+ * @returns {number} Rotation angle expressed in degrees.
+ */
+const rotation = (coordinateX, coordinateY, element, maxRotation) => {
+    const horizontalOffset = Math.min(Math.max(coordinateX / element.offsetWidth, -1), 1);
+    const verticalOffset = (coordinateY > 0 ? 1 : -1) * Math.min(Math.abs(coordinateY) / 100, 1);
+    const calculatedRotation = horizontalOffset * verticalOffset * maxRotation;
+
+    return calculatedRotation;
+};
+
+const THROW_IN = 'in';
+const THROW_OUT = 'out';
+
+/**
+ * Creates a configuration object.
+ *
+ * @param {Object} config
+ * @returns {Object}
+ */
+const makeConfig = (config = {}) => {
+    const defaultConfig = {
+        allowedDirections: [
+            Direction.RIGHT,
+            Direction.LEFT,
+            Direction.UP
+        ],
+        isThrowOut: isThrowOut,
+        maxRotation: 20,
+        maxThrowOutDistance: 500,
+        minThrowOutDistance: 400,
+        rotation: rotation,
+        throwOutConfidence: throwOutConfidence,
+        throwOutDistance: throwOutDistance,
+        transform: transform
+    };
+
+    return _.assign({}, defaultConfig, config);
 };
 
 /**
@@ -60,7 +206,7 @@ const Card = (stack, targetElement, prepend) => {
 
     const construct = () => {
         card = {};
-        config = Card.makeConfig(stack.getConfig());
+        config = makeConfig(stack.getConfig());
         eventEmitter = Sister();
         springSystem = stack.getSpringSystem();
         springThrowIn = springSystem.createSpring(250, 10);
@@ -98,13 +244,13 @@ const Card = (stack, targetElement, prepend) => {
         });
 
         if (prepend) {
-            Card.prependToParent(targetElement);
+            prependToParent(targetElement);
         } else {
-            Card.appendToParent(targetElement);
+            appendToParent(targetElement);
         }
 
         eventEmitter.on('panstart', () => {
-            Card.appendToParent(targetElement);
+            appendToParent(targetElement);
 
         eventEmitter.trigger('dragstart', {
             target: targetElement
@@ -304,7 +450,7 @@ const Card = (stack, targetElement, prepend) => {
         };
 
         /**
-         * @param {Card.THROW_IN|Card.THROW_OUT} where
+         * @param {THROW_IN|THROW_OUT} where
          * @param {number} fromX
          * @param {number} fromY
          * @param {Direction} [direction]
@@ -317,14 +463,14 @@ const Card = (stack, targetElement, prepend) => {
             // If direction argument is not set, compute it from coordinates.
             lastThrow.direction = direction || computeDirection(fromX, fromY, config.allowedDirections);
 
-            if (where === Card.THROW_IN) {
+            if (where === THROW_IN) {
                 springThrowIn.setCurrentValue(0).setAtRest().setEndValue(1);
 
                 eventEmitter.trigger('throwin', {
                     target: targetElement,
                     throwDirection: lastThrow.direction
                 });
-            } else if (where === Card.THROW_OUT) {
+            } else if (where === THROW_OUT) {
                 springThrowOut.setCurrentValue(0).setAtRest().setVelocity(100).setEndValue(1);
 
                 eventEmitter.trigger('throwout', {
@@ -360,7 +506,7 @@ const Card = (stack, targetElement, prepend) => {
      * @returns {undefined}
      */
     card.throwIn = (coordinateX, coordinateY, direction) => {
-        throwWhere(Card.THROW_IN, coordinateX, coordinateY, direction);
+        throwWhere(THROW_IN, coordinateX, coordinateY, direction);
     };
 
     /**
@@ -372,7 +518,7 @@ const Card = (stack, targetElement, prepend) => {
      * @returns {undefined}
      */
     card.throwOut = (coordinateX, coordinateY, direction) => {
-        throwWhere(Card.THROW_OUT, coordinateX, coordinateY, direction);
+        throwWhere(THROW_OUT, coordinateX, coordinateY, direction);
     };
 
     /**
@@ -391,149 +537,5 @@ const Card = (stack, targetElement, prepend) => {
 
     return card;
 };
-
-/**
- * Creates a configuration object.
- *
- * @param {Object} config
- * @returns {Object}
- */
-Card.makeConfig = (config = {}) => {
-    const defaultConfig = {
-        allowedDirections: [
-            Direction.RIGHT,
-            Direction.LEFT,
-            Direction.UP
-        ],
-        isThrowOut: Card.isThrowOut,
-        maxRotation: 20,
-        maxThrowOutDistance: 500,
-        minThrowOutDistance: 400,
-        rotation: Card.rotation,
-        throwOutConfidence: Card.throwOutConfidence,
-        throwOutDistance: Card.throwOutDistance,
-        transform: Card.transform
-    };
-
-    return _.assign({}, defaultConfig, config);
-};
-
-/**
- * Uses CSS transform to translate element position and rotation.
- *
- * Invoked in the event of `dragmove` and every time the physics solver is triggered.
- *
- * @param {HTMLElement} element
- * @param {number} coordinateX Horizontal offset from the startDrag.
- * @param {number} coordinateY Vertical offset from the startDrag.
- * @param {number} rotation
- * @returns {undefined}
- */
-Card.transform = (element, coordinateX, coordinateY, rotation) => {
-    element.style[vendorPrefix('transform')] = 'translate3d(0, 0, 0) translate(' + coordinateX + 'px, ' + coordinateY + 'px) rotate(' + rotation + 'deg)';
-};
-
-/**
- * Append element to the parentNode.
- *
- * This makes the element first among the siblings. The reason for using
- * this as opposed to zIndex is to allow CSS selector :nth-child.
- *
- * Invoked in the event of mousedown.
- * Invoked when card is added to the stack.
- *
- * @param {HTMLElement} element The target element.
- * @returns {undefined}
- */
-Card.appendToParent = (element) => {
-    const parentNode = element.parentNode;
-    const siblings = elementChildren(parentNode);
-    const targetIndex = siblings.indexOf(element);
-
-    if (targetIndex + 1 !== siblings.length) {
-        parentNode.removeChild(element);
-        parentNode.appendChild(element);
-    }
-};
-
-/**
- * Prepend element to the parentNode.
- *
- * This makes the element last among the siblings.
- *
- * Invoked when card is added to the stack (when prepend is true).
- *
- * @param {HTMLElement} element The target element.
- * @return {undefined}
- */
-Card.prependToParent = (element) => {
-    const parentNode = element.parentNode;
-
-    parentNode.removeChild(element);
-    parentNode.insertBefore(element, parentNode.firstChild);
-};
-
-/**
- * Returns a value between 0 and 1 indicating the completeness of the throw out condition.
- *
- * Ration of the absolute distance from the original card position and element width.
- *
- * @param {number} xOffset Distance from the dragStart.
- * @param {number} yOffset Distance from the dragStart.
- * @param {HTMLElement} element Element.
- * @returns {number}
- */
-Card.throwOutConfidence = (xOffset, yOffset, element) => {
-    const xConfidence = Math.min(Math.abs(xOffset) / element.offsetWidth, 1);
-    const yConfidence = Math.min(Math.abs(yOffset) / element.offsetHeight, 1);
-
-    return Math.max(xConfidence, yConfidence);
-};
-
-/**
- * Determines if element is being thrown out of the stack.
- *
- * Element is considered to be thrown out when throwOutConfidence is equal to 1.
- *
- * @param {number} xOffset Distance from the dragStart.
- * @param {number} yOffset Distance from the dragStart.
- * @param {HTMLElement} element Element.
- * @param {number} throwOutConfidence config.throwOutConfidence
- * @returns {boolean}
- */
-Card.isThrowOut = (xOffset, yOffset, element, throwOutConfidence) => {
-    return throwOutConfidence === 1;
-};
-
-/**
- * Calculates a distances at which the card is thrown out of the stack.
- *
- * @param {number} min
- * @param {number} max
- * @returns {number}
- */
-Card.throwOutDistance = (min, max) => {
-    return _.random(min, max);
-};
-
-/**
- * Calculates rotation based on the element x and y offset, element width and maxRotation variables.
- *
- * @param {number} coordinateX Horizontal offset from the startDrag.
- * @param {number} coordinateY Vertical offset from the startDrag.
- * @param {HTMLElement} element Element.
- * @param {number} maxRotation
- * @returns {number} Rotation angle expressed in degrees.
- */
-Card.rotation = (coordinateX, coordinateY, element, maxRotation) => {
-    const horizontalOffset = Math.min(Math.max(coordinateX / element.offsetWidth, -1), 1);
-    const verticalOffset = (coordinateY > 0 ? 1 : -1) * Math.min(Math.abs(coordinateY) / 100, 1);
-    const rotation = horizontalOffset * verticalOffset * maxRotation;
-
-    return rotation;
-};
-
-Card.THROW_IN = 'in';
-Card.THROW_OUT = 'out';
 
 export default Card;
