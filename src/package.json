@@ -1,6 +1,6 @@
 {
   "name": "ionic-swing",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/peterpeterparker/ionic-swing.git"
@@ -19,7 +19,9 @@
   "module": "ionic-swing.js",
   "typings": "ionic-swing.d.ts",
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
+    "@angular/core": "^4.0.0"
+  },
+  "dependencies": {
     "lodash": "^4.6.1",
     "raf": "^3.1.0",
     "rebound": "^0.0.13",
