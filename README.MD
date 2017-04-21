@@ -1,5 +1,23 @@
 # ionic-swing
 
+ionic-swing is a fork of the following projects intended to add the swipeable cards capatibilies to Ionic (> 2)
+
+- swing.js (version 4.2.0, https://github.com/gajus/swing)
+- angular2-swing (version 0.11.0, https://github.com/ksachdeva/angular2-swing)
+
+The main reason behind this fork is that I was facing a problem with hammerjs, which was freezing the scrolling of my application's on iOS and Android when I was using (swipe) on a list or on an ion-scroll.
+After having unsuccessfully tried many solutions I was thinking, after all, that Ionic already include is own version of hammer.
+Therefore I decided to create this fork with the goal to make a version of swing.js which doesn't embed any external hammerjs.
+
+## Current status
+
+This fork project is in beta version but seems to work.
+
+Possible improvements not yet done:
+
+- Improve typescripting and remove class swing.ts
+- The fork special dependencies are, inherited from swing.js, lodash, raf, rebound, sister, vendor-prefix. For bundle size reason mostly, it should be checked if these can't be replaced with native code or smaller libs.
+
 ## Installation
 
 To install this library, run:
@@ -8,50 +26,27 @@ To install this library, run:
 $ npm install ionic-swing --save
 ```
 
-## Consuming your library
+## Usage
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
+### 1. Import the IonicSwingModule
 
-```bash
-$ npm install ionic-swing
-```
+In your app.module.ts, import the library like following:
 
-and then from your Angular `AppModule`:
+    import {IonicSwingModule} from 'ionic-swing';
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+and add it to your imports:
 
-import { AppComponent } from './app.component';
+    imports: [
+        ...
+        IonicSwingModule
+        ...
+    ]
 
-// Import your library
-import { SampleModule } from 'ionic-swing';
+### 2. To implement a card stack
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
+To implement a card stack, follow the example provided by angular2-swing
 
-    // Specify your library as an import
-    LibraryModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
-
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
-```
+See https://github.com/ksachdeva/angular2-swing
 
 ## Development
 
