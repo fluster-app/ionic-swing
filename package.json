@@ -29,6 +29,7 @@
     "@angular/core": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
+    "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
@@ -52,9 +53,15 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "lodash": "^4.6.1",
+    "raf": "^3.1.0",
+    "rebound": "^0.0.13",
+    "sister": "^3.0.0",
+    "vendor-prefix": "^0.1.0"
   },
   "engines": {
     "node": ">=6.0.0"
-  }
+  },
+  "dependencies": {}
 }
