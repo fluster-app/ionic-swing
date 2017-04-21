@@ -1,12 +1,11 @@
-declare var require: any;
-
 import {Component, Input,
     AfterContentInit, EventEmitter } from '@angular/core';
 
-import { Direction, ThrowEvent, DragEvent, Stack, Card, StackConfig } from './swing';
 import {SwingCardComponent} from './swing-card-component';
 
-const Swing = require('swing');
+import {StackConfig, ThrowEvent, DragEvent} from './swing';
+
+import Stack from '../swing/stack';
 
 @Component({
     selector: '[swing-stack]',
@@ -45,7 +44,7 @@ export class SwingStackComponent implements AfterContentInit {
     dragend: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
     cards: SwingCardComponent[];
-    stack: Stack;
+    stack: any;
 
     constructor() {
         this.cards = [];
@@ -59,7 +58,7 @@ export class SwingStackComponent implements AfterContentInit {
     }
 
     ngAfterContentInit() {
-        this.stack = Swing.Stack(this.stackConfig || {});
+        this.stack = Stack(this.stackConfig || {});
         this.cards.forEach((c) => this.stack.createCard(c.getNativeElement()));
 
         // Hook various events

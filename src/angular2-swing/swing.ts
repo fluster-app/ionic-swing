@@ -72,28 +72,6 @@ export interface Card {
     on(eventName: DragEventName, callabck: (event: DragEvent) => void): void;
 }
 
-export interface Stack {
-
-    /**
-     * Creates an instance of Card and associates it with an element.
-     *
-     * @param {HTMLElement} element
-     * @return {Card}
-     */
-    createCard(elment: HTMLElement): void;
-
-    /**
-     * Returns an instance of Card associated with an element.
-     *
-     * @param {HTMLElement} element
-     * @return {Card|null}
-     */
-    getCard(element: HTMLElement): Card;
-
-    on(eventName: ThrowEventName, callabck: (event: ThrowEvent) => void): void;
-    on(eventName: DragEventName, callabck: (event: DragEvent) => void): void;
-}
-
 export interface StackConfig {
 
     minThrowOutDistance?: number;
