@@ -160,10 +160,10 @@ export interface StackConfig {
     transform?: (element: HTMLElement, x: number, y: number, r: number) => void;
 }
 
-export enum Direction {
-    DOWN = Swing.Direction.DOWN,
-    INVALID = Swing.Direction.INVALID,
-    LEFT = Swing.Direction.LEFT,
-    RIGHT = Swing.Direction.RIGHT,
-    UP = Swing.Direction.UP
+export interface Direction {
+    DOWN;
+    INVALID;
+    LEFT;
+    RIGHT;
+    UP;
 }
