@@ -2,7 +2,7 @@
 
 ionic-swing is a fork of the following projects intended to add the swipeable cards capatibilies to Ionic (>= 2)
 
-- swing.js (version 4.2.0, https://github.com/gajus/swing)
+- swing.js (version 4.3.0, https://github.com/gajus/swing)
 - angular2-swing (version 0.11.0, https://github.com/ksachdeva/angular2-swing)
 
 The main reason behind this fork is that I was facing a problem with hammerjs, which was freezing the scrolling of my application on iOS and Android devices when I was using (swipe) on a list or on an ion-scroll.
