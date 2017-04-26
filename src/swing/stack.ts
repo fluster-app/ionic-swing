@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import _ from 'underscore';
+
 import Sister from 'sister';
 import rebound from 'rebound';
 
@@ -97,8 +98,8 @@ export const Stack = (config) => {
      * @returns {Card|null}
      */
     stack.getCard = (element) => {
-        const group = _.find(index, {
-            element
+        const group = _.find(index, (i) => {
+            return _.isEqual(i, element);
         });
 
         if (group) {

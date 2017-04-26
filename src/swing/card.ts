@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import _ from 'underscore';
+
 import Sister from 'sister';
 import rebound from 'rebound';
 import vendorPrefix from 'vendor-prefix';

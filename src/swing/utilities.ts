@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from 'underscore';
 
 /**
  * Return direct children elements.
@@ -8,8 +8,8 @@ import _ from 'lodash';
  * @returns {Array}
  */
 const elementChildren = (element) => {
-    return _.filter(element.childNodes, {
-        nodeType: 1
+    return _.filter(element.childNodes, (elem) => {
+        return elem.nodeType === 1;
     });
 };
 
