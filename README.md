@@ -13,12 +13,12 @@ Therefore I decided to create this fork with the goal to make a version of swing
 
 ## Current status
 
-This fork project is in version beta but seems to work (tested with Ionic 3.0.1).
+This fork project is in version beta but seems to work (tested with Ionic 3.1.0).
 
 Possible improvements not yet done:
 
 - Improve typescripting and remove class swing.ts
-- The fork special dependencies are, inherited from swing.js, lodash, raf, rebound, sister, vendor-prefix. To spare size of my application (smaller bundle = faster boot), it should be checked if these can't be replaced with native code or smaller libs.
+- The fork special dependencies are, inherited from swing.js, raf, rebound, sister, vendor-prefix. To spare size of my application (smaller bundle = faster boot), it should be checked if these can't be replaced with native code or smaller libs.
 
 ## Installation
 
