@@ -57,7 +57,7 @@
     "tslint": "~4.5.0",
     "typescript": "~2.2.0",
     "vendor-prefix": "^0.1.0",
-    "zone.js": "^0.8.9"
+    "zone.js": "^0.8.10"
   },
   "engines": {
     "node": ">=6.0.0"
