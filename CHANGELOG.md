@@ -1,3 +1,7 @@
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/peterpeterparker/ionic-swing/compare/v0.0.4...v0.0.5) (2017-05-11)
+* **lib:** Update to angular 4.1.0
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/peterpeterparker/ionic-swing/compare/v0.0.3...v0.0.4) (2017-04-26)
 

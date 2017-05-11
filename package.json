@@ -1,6 +1,6 @@
 {
   "name": "ionic-swing",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -23,12 +23,12 @@
     "url": "https://github.com/peterpeterparker/ionic-swing.git/issues"
   },
   "devDependencies": {
-    "@angular/common": "^4.0.2",
-    "@angular/compiler": "^4.0.2",
-    "@angular/compiler-cli": "^4.0.2",
-    "@angular/core": "^4.0.2",
-    "@angular/platform-browser": "^4.0.2",
-    "@angular/platform-browser-dynamic": "^4.0.2",
+    "@angular/common": "^4.1.0",
+    "@angular/compiler": "^4.1.0",
+    "@angular/compiler-cli": "^4.1.0",
+    "@angular/core": "^4.1.0",
+    "@angular/platform-browser": "^4.1.0",
+    "@angular/platform-browser-dynamic": "^4.1.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
