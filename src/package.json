@@ -22,7 +22,6 @@
     "@angular/core": "^4.4.3"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
     "raf": "^3.3.2",
     "rebound": "^0.0.13",
     "sister": "^3.0.0",
