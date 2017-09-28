@@ -356,6 +356,7 @@ const Card = (stack, targetElement, prepend) => {
 
         mc.on('panstart', (event) => {
             isPanning = true;
+            eventEmitter.trigger('panstart', event);
     });
 
         mc.on('panmove', (event) => {
