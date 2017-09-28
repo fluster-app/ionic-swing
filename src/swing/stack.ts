@@ -116,6 +116,8 @@ export const Stack = (config) => {
      * @returns {null}
      */
     stack.destroyCard = (card) => {
+        eventEmitter.trigger('destroyCard', card);
+
         return _.remove(index, {
             card
         });
