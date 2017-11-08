@@ -52,21 +52,17 @@ See https://github.com/ksachdeva/angular2-swing
 
 ## Development
 
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
+To generate the library using ng-packagr (https://github.com/dherges/ng-packagr)
 
 ```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
+$ npm run packagr
 ```
 
 ## Side notes
 
-Project structure created with https://github.com/jvandemo/generator-angular2-library
+Struture of the project created following the tutorial of Nikolas LeBlanc
+
+https://medium.com/@ngl817/building-an-angular-4-component-library-with-the-angular-cli-and-ng-packagr-53b2ade0701e
 
 ## License
 
