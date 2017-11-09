@@ -1,5 +1,11 @@
+<a name="0.1.0"></a>
+## [0.1.0](https://github.com/peterpeterparker/ionic-swing/compare/v0.0.10...v0.1.0) (2017-11-09)
+* **project:** Migration of the project structure to use Angular CLI
+* **project:** Introduction of ng-packagr to build the module
+* **lib:** Update angular 5.0.0 and rjxs 5.5.2
+
 <a name="0.0.7"></a>
-## [0.0.7](https://github.com/peterpeterparker/ionic-swing/compare/v0.0.6...v0.0.7) (2017-06-18)
+## [0.0.7](https://github.com/peterpeterparker/ionic-swing/compare/v0.0.6...v0.0.10) (2017-06-18)
 * **lib:** Update angular, rjxs and zone.js
 
 <a name="0.0.6"></a>

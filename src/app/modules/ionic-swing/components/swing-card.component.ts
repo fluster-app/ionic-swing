@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {SwingStackComponent} from './swing-stack-component';
-import {Card} from './swing';
+
+import {SwingStackComponent} from './swing-stack.component';
+import {Card} from '../interfaces/swing';
 
 @Component({
     selector: '[swing-card]',

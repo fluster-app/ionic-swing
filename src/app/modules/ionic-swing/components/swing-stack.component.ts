@@ -1,9 +1,9 @@
 import {Component, Input,
     AfterContentInit, EventEmitter } from '@angular/core';
 
-import {SwingCardComponent} from './swing-card-component';
+import {SwingCardComponent} from './swing-card.component';
 
-import {StackConfig, ThrowEvent, DragEvent} from './swing';
+import {StackConfig, ThrowEvent, DragEvent} from '../interfaces/swing';
 
 import Stack from '../swing/stack';
 
