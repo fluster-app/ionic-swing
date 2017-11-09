@@ -58,6 +58,15 @@ To generate the library using ng-packagr (https://github.com/dherges/ng-packagr)
 $ npm run packagr
 ```
 
+To test locally
+
+```bash
+$ cd dist
+$ npm pack
+$ cd /your-project-path/
+$ npm install /relative-path-to-local-ionic-swing/dist/ionic-swing-0.0.0.tgz
+```
+
 ## Side notes
 
 Struture of the project created following the tutorial of Nikolas LeBlanc
