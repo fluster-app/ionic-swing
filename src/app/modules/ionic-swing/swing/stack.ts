@@ -99,7 +99,9 @@ export const Stack = (config) => {
      */
     stack.getCard = (element) => {
         const group = _.find(index, (i) => {
-            return _.isEqual(i, element);
+             if(element.isEqualNode(i.element)){
+                    return i;
+            }
         });
 
         if (group) {
