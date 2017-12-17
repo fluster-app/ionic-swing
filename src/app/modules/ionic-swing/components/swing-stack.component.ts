@@ -53,7 +53,7 @@ export class SwingStackComponent implements AfterContentInit {
     addCard(card: SwingCardComponent) {
         this.cards.push(card);
         if (this.stack) {
-            this.stack.createCard(card.getNativeElement());
+            return this.stack.createCard(card.getNativeElement());
         }
     }
 
