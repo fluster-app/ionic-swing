@@ -10,13 +10,14 @@ import {Card} from '../interfaces/swing';
     `
 })
 export class SwingCardComponent implements OnInit {
+    private card:Card;
     constructor(
         private elmentRef: ElementRef,
         private swingStack: SwingStackComponent) {
     }
 
     ngOnInit() {
-        this.swingStack.addCard(this);
+        this.card = this.swingStack.addCard(this);
     }
 
     getElementRef() {
@@ -28,6 +29,6 @@ export class SwingCardComponent implements OnInit {
     }
 
     getCard(): Card {
-        return this.swingStack.stack.getCard(this.getNativeElement());
+        return this.card;
     }
 }
