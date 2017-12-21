@@ -475,6 +475,7 @@ const Card = (stack, targetElement, prepend) => {
                     throwDirection: lastThrow.direction
                 });
             } else if (where === THROW_OUT) {
+                isDraging = false;
                 springThrowOut.setCurrentValue(0).setAtRest().setVelocity(100).setEndValue(1);
 
                 eventEmitter.trigger('throwout', {
@@ -532,6 +533,7 @@ const Card = (stack, targetElement, prepend) => {
      * @returns {undefined}
      */
     card.destroy = () => {
+        isDraging = false;
         mc.destroy();
         springThrowIn.destroy();
         springThrowOut.destroy();
