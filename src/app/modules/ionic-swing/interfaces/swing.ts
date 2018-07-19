@@ -46,25 +46,25 @@ export interface Card {
      * Unbinds all Hammer.Manager events.
      * Removes the listeners from the physics simulation.
      *
-     * @return {undefined}
+     * return {undefined}
      */
     destroy(): void;
 
     /**
      * Throws a card into the stack from an arbitrary position.
      *
-     * @param {Number} fromX
-     * @param {Number} fromY
-     * @return {undefined}
+     * param {Number} fromX
+     * param {Number} fromY
+     * return {undefined}
      */
     throwIn(x: number, y: number): void;
 
     /**
      * Throws a card out of the stack in the direction away from the original offset.
      *
-     * @param {Number} fromX
-     * @param {Number} fromY
-     * @return {undefined}
+     * param {Number} fromX
+     * param {Number} fromY
+     * return {undefined}
      */
     throwOut(x: number, y: number): void;
 
@@ -84,10 +84,10 @@ export interface StackConfig {
      *
      * Element is considered to be thrown out when throwOutConfidence is equal to 1.
      *
-     * @param {Number} offset Distance from the dragStart.
-     * @param {HTMLElement} element Element.
-     * @param {Number} throwOutConfidence config.throwOutConfidence
-     * @return {Boolean}
+     * param {Number} offset Distance from the dragStart.
+     * param {HTMLElement} element Element.
+     * param {Number} throwOutConfidence config.throwOutConfidence
+     * return {Boolean}
      */
     isThrowOut?: (offset: number, element: HTMLElement, throwOutConfidence: number) => boolean;
 
@@ -96,19 +96,19 @@ export interface StackConfig {
      *
      * Ration of the absolute distance from the original card position and element width.
      *
-     * @param {Number} offsetX Distance from the dragStart.
-     * @param {Number} offsetY Distance from the dragStart.
-     * @param {HTMLElement} element Element.
-     * @return {Number}
+     * param {Number} offsetX Distance from the dragStart.
+     * param {Number} offsetY Distance from the dragStart.
+     * param {HTMLElement} element Element.
+     * return {Number}
      */
     throwOutConfidence?: (offsetX: number, offsetY: number, element: HTMLElement) => number;
 
     /**
      * Calculates a distances at which the card is thrown out of the stack.
      *
-     * @param {Number} min
-     * @param {Number} max
-     * @return {Number}
+     * param {Number} min
+     * param {Number} max
+     * return {Number}
      */
     throwOutDistance?: (min: number, max: number) => number;
 
@@ -116,11 +116,11 @@ export interface StackConfig {
      * Calculates rotation based on the element x and y offset, element width and
      * maxRotation variables.
      *
-     * @param {Number} x Horizontal offset from the startDrag.
-     * @param {Number} y Vertical offset from the startDrag.
-     * @param {HTMLElement} element Element.
-     * @param {Number} maxRotation
-     * @return {Number} Rotation angle expressed in degrees.
+     * param {Number} x Horizontal offset from the startDrag.
+     * param {Number} y Vertical offset from the startDrag.
+     * param {HTMLElement} element Element.
+     * param {Number} maxRotation
+     * return {Number} Rotation angle expressed in degrees.
      */
     rotation?: (x: number, y: number, element: HTMLElement, maxRotation: number) => number;
 
@@ -129,11 +129,11 @@ export interface StackConfig {
      *
      * Invoked in the event of `dragmove` and every time the physics solver is triggered.
      *
-     * @param {HTMLElement} element
-     * @param {Number} x Horizontal offset from the startDrag.
-     * @param {Number} y Vertical offset from the startDrag.
-     * @param {Number} r
-     * @return {undefined}
+     * param {HTMLElement} element
+     * param {Number} x Horizontal offset from the startDrag.
+     * param {Number} y Vertical offset from the startDrag.
+     * param {Number} r
+     * return {undefined}
      */
     transform?: (element: HTMLElement, x: number, y: number, r: number) => void;
 }
