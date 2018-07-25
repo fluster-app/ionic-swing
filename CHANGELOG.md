@@ -1,3 +1,8 @@
+<a name="2.0.0"></a>
+## [2.0.0](https://github.com/peterpeterparker/ionic-swing/compare/v0.1.0...v2.0.0) (2018-07-25)
+* **breaking changes**: Update project to Angular v6
+* **lib**: From now on, `ionic-swing` is shipped with a reference to `hammerjs`
+
 <a name="0.1.0"></a>
 ## [0.1.0](https://github.com/peterpeterparker/ionic-swing/compare/v0.0.10...v0.1.0) (2017-11-09)
 * **project:** Migration of the project structure to use Angular CLI
