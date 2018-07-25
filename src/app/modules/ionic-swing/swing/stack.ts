@@ -6,8 +6,8 @@ import rebound from 'rebound';
 import Card from './card';
 
 /**
- * @param {Object} config Stack configuration.
- * @returns {Object} An instance of Stack object.
+ * param {Object} config Stack configuration.
+ * returns {Object} An instance of Stack object.
  */
 export const Stack = (config) => {
   let eventEmitter;
@@ -27,7 +27,7 @@ export const Stack = (config) => {
   /**
    * Get the configuration object.
    *
-   * @returns {Object}
+   * returns {Object}
    */
   stack.getConfig = () => {
     return config;
@@ -36,7 +36,7 @@ export const Stack = (config) => {
   /**
    * Get a singleton instance of the SpringSystem physics engine.
    *
-   * @returns {Sister}
+   * returns {Sister}
    */
   stack.getSpringSystem = () => {
     return springSystem;
@@ -45,9 +45,9 @@ export const Stack = (config) => {
   /**
    * Proxy to the instance of the event emitter.
    *
-   * @param {string} eventName
-   * @param {string} listener
-   * @returns {undefined}
+   * param {string} eventName
+   * param {string} listener
+   * returns {undefined}
    */
   stack.on = (eventName, listener) => {
     eventEmitter.on(eventName, listener);
@@ -56,9 +56,9 @@ export const Stack = (config) => {
   /**
    * Creates an instance of Card and associates it with an element.
    *
-   * @param {HTMLElement} element
-   * @param {boolean} prepend
-   * @returns {Card}
+   * param {HTMLElement} element
+   * param {boolean} prepend
+   * returns {Card}
    */
   stack.createCard = (element, prepend) => {
     const card = Card(stack, element, prepend);
@@ -94,8 +94,8 @@ export const Stack = (config) => {
   /**
    * Returns an instance of Card associated with an element.
    *
-   * @param {HTMLElement} element
-   * @returns {Card|null}
+   * param {HTMLElement} element
+   * returns {Card|null}
    */
   stack.getCard = (element) => {
     const group = _.find(index, (i) => {
@@ -114,8 +114,8 @@ export const Stack = (config) => {
   /**
    * Remove an instance of Card from the stack index.
    *
-   * @param {Card} card
-   * @returns {null}
+   * param {Card} card
+   * returns {null}
    */
   stack.destroyCard = (card) => {
     eventEmitter.trigger('destroyCard', card);
