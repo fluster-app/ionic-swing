@@ -14,6 +14,8 @@ export * from './swing/direction';
 export * from './swing/stack';
 export * from './swing/utilities';
 
+import 'hammerjs';
+
 @NgModule({
   imports: [
     CommonModule
