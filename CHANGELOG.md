@@ -1,3 +1,7 @@
+<a name="2.1.0"></a>
+## [2.1.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.0.1...v2.1.0) (2018-08-04)
+* **lib**: Revert, `hammerjs` will not be shipped with `ionic-swing` as it was previously the case
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/peterpeterparker/ionic-swing/compare/v0.2.0...v2.0.1) (2018-07-25)
 * **breaking changes**: Update project to Angular v6
