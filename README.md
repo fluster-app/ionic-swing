@@ -35,6 +35,18 @@ To implement a card stack, follow the example provided by angular2-swing
 
 See https://github.com/ksachdeva/angular2-swing
 
+## Notes regarding hammerjs
+
+This library need `hammerjs` but isn't shipped with it because some framework, like `Ionic v3`, already include it in their own resources. If it isn't your case, you would need to install `hammerjs` in your project 
+
+```bash
+$ npm install hammerjs --save
+```
+
+and add the following line to your `app.component.ts`
+
+    import 'hammerjs';
+
 ## Development
 
 To generate the library using ng-packagr (https://github.com/dherges/ng-packagr)
