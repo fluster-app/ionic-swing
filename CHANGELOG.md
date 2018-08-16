@@ -1,3 +1,9 @@
+<a name="2.2.0"></a>
+## [2.2.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.1.0...v2.2.0) (2018-08-16)
+* **feature**: Cards' position in the stack is not modified per default anymore. This is now optional, use `StackConfig.sortCards` if you wish to do so
+* **refactor**: The `prepend` option as been moved to  `StackConfig.prependCards`
+* **lib**: Update all libs dependencies
+
 <a name="2.1.0"></a>
 ## [2.1.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.0.1...v2.1.0) (2018-08-04)
 * **lib**: Revert, `hammerjs` will not be shipped with `ionic-swing` as it was previously the case
