@@ -173,7 +173,9 @@ const makeConfig = (config = {}) => {
     rotation: rotation,
     throwOutConfidence: throwOutConfidence,
     throwOutDistance: throwOutDistance,
-    transform: transform
+    transform: transform,
+    sortChild: false,
+    prependChild: false
   };
 
   return _.assign({}, defaultConfig, config);
@@ -182,10 +184,9 @@ const makeConfig = (config = {}) => {
 /**
  * param {Stack} stack
  * param {HTMLElement} targetElement
- * param {boolean} prepend
  * returns {Object} An instance of Card.
  */
-const Card = (stack, targetElement, prepend) => {
+const Card = (stack, targetElement) => {
   let card;
   let config;
   let currentX;
@@ -246,14 +247,18 @@ const Card = (stack, targetElement, prepend) => {
       ]
     });
 
-    if (prepend) {
-      prependToParent(targetElement);
-    } else {
-      appendToParent(targetElement);
+    if (config.sortChild) {
+      if (config.prependChild) {
+        prependToParent(targetElement);
+      } else {
+        appendToParent(targetElement);
+      }
     }
 
     eventEmitter.on('panstart', () => {
-      appendToParent(targetElement);
+      if (config.sortChild) {
+        appendToParent(targetElement);
+      }
 
       eventEmitter.trigger('dragstart', {
         target: targetElement

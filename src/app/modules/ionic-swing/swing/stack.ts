@@ -57,11 +57,10 @@ export const Stack = (config) => {
    * Creates an instance of Card and associates it with an element.
    *
    * param {HTMLElement} element
-   * param {boolean} prepend
    * returns {Card}
    */
-  stack.createCard = (element, prepend) => {
-    const card = Card(stack, element, prepend);
+  stack.createCard = (element) => {
+    const card = Card(stack, element);
     const events = [
       'throwout',
       'throwoutend',

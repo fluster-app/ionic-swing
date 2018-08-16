@@ -79,6 +79,9 @@ export interface StackConfig {
     maxRotation?: number;
     allowedDirections?: Array<any>;
 
+    sortChild?: boolean;
+    prependChild?: boolean;
+
     /**
      * Determines if element is being thrown out of the stack.
      *
