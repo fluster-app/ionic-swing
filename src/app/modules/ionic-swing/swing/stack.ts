@@ -1,7 +1,7 @@
 import _ from 'underscore';
 
 import Sister from 'sister';
-import rebound from 'rebound';
+import * as rebound from 'rebound';
 
 import Card from './card';
 

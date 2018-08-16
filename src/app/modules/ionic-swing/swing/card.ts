@@ -1,7 +1,7 @@
 import _ from 'underscore';
 
 import Sister from 'sister';
-import rebound from 'rebound';
+import * as rebound from 'rebound';
 import vendorPrefix from 'vendor-prefix';
 import raf from 'raf';
 import Direction from './direction';
@@ -381,8 +381,8 @@ const Card = (stack, targetElement) => {
       },
       onSpringUpdate: (spring) => {
         const value = spring.getCurrentValue();
-        const coordianteX = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromX, 0);
-        const coordianteY = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromY, 0);
+        const coordianteX = rebound.util.mapValueInRange(value, 0, 1, lastThrow.fromX, 0);
+        const coordianteY = rebound.util.mapValueInRange(value, 0, 1, lastThrow.fromY, 0);
 
         onSpringUpdate(coordianteX, coordianteY);
       }
@@ -403,12 +403,12 @@ const Card = (stack, targetElement) => {
 
         if (lastThrow.direction === Direction.RIGHT || lastThrow.direction === Direction.LEFT) {
           directionFactor = lastThrow.direction === Direction.RIGHT ? 1 : -1;
-          coordianteX = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromX, throwOutDistance * directionFactor);
+          coordianteX = rebound.util.mapValueInRange(value, 0, 1, lastThrow.fromX, throwOutDistance * directionFactor);
           coordianteY = lastThrow.fromY;
         } else if (lastThrow.direction === Direction.UP || lastThrow.direction === Direction.DOWN) {
           directionFactor = lastThrow.direction === Direction.DOWN ? 1 : -1;
           coordianteX = lastThrow.fromX;
-          coordianteY = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromY, throwOutDistance * directionFactor);
+          coordianteY = rebound.util.mapValueInRange(value, 0, 1, lastThrow.fromY, throwOutDistance * directionFactor);
         }
 
         onSpringUpdate(coordianteX, coordianteY);
