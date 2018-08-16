@@ -174,8 +174,8 @@ const makeConfig = (config = {}) => {
     throwOutConfidence: throwOutConfidence,
     throwOutDistance: throwOutDistance,
     transform: transform,
-    sortChild: false,
-    prependChild: false
+    sortCards: false,
+    prependCards: false
   };
 
   return _.assign({}, defaultConfig, config);
@@ -247,8 +247,8 @@ const Card = (stack, targetElement) => {
       ]
     });
 
-    if (config.sortChild) {
-      if (config.prependChild) {
+    if (config.sortCards) {
+      if (config.prependCards) {
         prependToParent(targetElement);
       } else {
         appendToParent(targetElement);
@@ -256,7 +256,7 @@ const Card = (stack, targetElement) => {
     }
 
     eventEmitter.on('panstart', () => {
-      if (config.sortChild) {
+      if (config.sortCards) {
         appendToParent(targetElement);
       }
 
