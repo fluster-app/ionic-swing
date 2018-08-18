@@ -119,9 +119,15 @@ export const Stack = (config) => {
   stack.destroyCard = (card) => {
     eventEmitter.trigger('destroyCard', card);
 
-    return _.remove(index, {
-      card
-    });
+    if (index && config.sortCards) {
+      if (config.prependCards) {
+        index.shift();
+      } else {
+        index.pop();
+      }
+    }
+
+    return index;
   };
 
   return stack;

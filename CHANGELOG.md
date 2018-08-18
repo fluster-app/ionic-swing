@@ -1,3 +1,8 @@
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/peterpeterparker/ionic-swing/compare/v2.2.1...v2.2.2) (2018-08-18)
+* **fix**: `stack.destroyCard` was wrongly implemented
+* **feature**: Observe `prepend` option in `stack.destroyCard`
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/peterpeterparker/ionic-swing/compare/v2.2.0...v2.2.1) (2018-08-18)
 * **fix**: Remove import of `hammerjs` (see README or CHANGELOG v2.1.0)
