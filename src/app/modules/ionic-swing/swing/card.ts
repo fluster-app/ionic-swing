@@ -316,7 +316,7 @@ const Card = (stack, targetElement) => {
     if (isTouchDevice()) {
       targetElement.addEventListener('touchstart', () => {
         eventEmitter.trigger('panstart');
-      });
+      }, { passive: true });
 
       targetElement.addEventListener('touchend', () => {
         if (isDraging && !isPanning) {
@@ -324,7 +324,7 @@ const Card = (stack, targetElement) => {
             target: targetElement
           });
         }
-      });
+      }, { passive: true });
 
       // Disable scrolling while dragging the element on the touch enabled devices.
       // @see http://stackoverflow.com/a/12090055/368691
@@ -333,22 +333,22 @@ const Card = (stack, targetElement) => {
 
         targetElement.addEventListener('touchstart', () => {
           dragging = true;
-        });
+        }, { passive: true });
 
         targetElement.addEventListener('touchend', () => {
           dragging = false;
-        });
+        }, { passive: true });
 
         global.addEventListener('touchmove', (event) => {
           if (dragging) {
             event.preventDefault();
           }
-        });
+        }, { passive: true });
       })();
     } else {
       targetElement.addEventListener('mousedown', () => {
         eventEmitter.trigger('panstart');
-      });
+      }, { passive: true });
 
       targetElement.addEventListener('mouseup', () => {
         if (isDraging && !isPanning) {
@@ -356,7 +356,7 @@ const Card = (stack, targetElement) => {
             target: targetElement
           });
         }
-      });
+      }, { passive: true });
     }
 
     mc.on('panstart', (event) => {
