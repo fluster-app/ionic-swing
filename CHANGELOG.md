@@ -1,3 +1,7 @@
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/peterpeterparker/ionic-swing/compare/v2.3.0...v2.3.1) (2018-08-27)
+* **revert**: Revert rename `swing-card`
+
 <a name="2.3.0"></a>
 ## [2.3.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.2.3...v2.3.0) (2018-08-27)
 * **feat**: Rename `swing-card` component to `swing` in order to fix compatibility problem with `Card` from Ionic (Angular error: "More than one component matched on this element.")

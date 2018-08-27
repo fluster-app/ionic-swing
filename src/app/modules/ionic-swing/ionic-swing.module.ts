@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {SwingComponent} from './components/swing.component';
+import {SwingCardComponent} from './components/swing-card.component';
 import {SwingStackComponent} from './components/swing-stack.component';
 
-export * from './components/swing.component';
+export * from './components/swing-card.component';
 export * from './components/swing-stack.component';
 
 export * from './interfaces/swing';
@@ -19,11 +19,11 @@ export * from './swing/utilities';
     CommonModule
   ],
   declarations: [
-    SwingComponent,
+    SwingCardComponent,
     SwingStackComponent
   ],
   exports: [
-    SwingComponent,
+    SwingCardComponent,
     SwingStackComponent
   ]
 })

@@ -1,7 +1,7 @@
 import {Component, Input,
     AfterContentInit, EventEmitter } from '@angular/core';
 
-import {SwingComponent} from './swing.component';
+import {SwingCardComponent} from './swing-card.component';
 
 import {StackConfig, ThrowEvent, DragEvent} from '../interfaces/swing';
 
@@ -43,14 +43,14 @@ export class SwingStackComponent implements AfterContentInit {
     dragmove: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
     dragend: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
-    cards: SwingComponent[];
+    cards: SwingCardComponent[];
     stack: any;
 
     constructor() {
         this.cards = [];
     }
 
-    addCard(card: SwingComponent) {
+    addCard(card: SwingCardComponent) {
         this.cards.push(card);
         if (this.stack) {
             return this.stack.createCard(card.getNativeElement());
