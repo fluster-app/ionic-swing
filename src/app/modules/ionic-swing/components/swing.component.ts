@@ -4,13 +4,13 @@ import {SwingStackComponent} from './swing-stack.component';
 import {Card} from '../interfaces/swing';
 
 @Component({
-    selector: '[swing-card]',
+    selector: '[swing]',
     template: `
         <ng-content></ng-content>
     `
 })
-export class SwingCardComponent implements OnInit {
-    private card:Card;
+export class SwingComponent implements OnInit {
+    private card: Card;
     constructor(
         private elmentRef: ElementRef,
         private swingStack: SwingStackComponent) {

@@ -1,3 +1,7 @@
+<a name="2.3.0"></a>
+## [2.3.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.2.3...v2.3.0) (2018-08-27)
+* **feat**: Rename `swing-card` component to `swing` in order to fix compatibility problem with `Card` from Ionic (Angular error: "More than one component matched on this element.")
+
 <a name="2.2.3"></a>
 ## [2.2.3](https://github.com/peterpeterparker/ionic-swing/compare/v2.2.2...v2.2.3) (2018-08-18)
 * **fix**: Fix Chrome complains "Added non-passive event listener to a scroll-blocking..." (see [Hammerjs commit #987](https://github.com/hammerjs/hammer.js/pull/987/commits/49cd23d30d9618c5e8b14dd4412f94454143e080))
