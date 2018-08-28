@@ -1,6 +1,7 @@
 <a name="3.0.0"></a>
 ## [3.0.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.3.1...v3.0.0) (2018-08-28)
 * **breaking**: Refactor components to directives in order to be compatible with Ionic v4 (>= beta.5) and/or Typescript v2.9.2
+* **fix**: `touchmove` set as not passive
 
 <a name="2.3.1"></a>
 ## [2.3.1](https://github.com/peterpeterparker/ionic-swing/compare/v2.3.0...v2.3.1) (2018-08-27)

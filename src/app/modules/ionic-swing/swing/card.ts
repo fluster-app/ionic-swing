@@ -343,7 +343,7 @@ const Card = (stack, targetElement) => {
           if (dragging) {
             event.preventDefault();
           }
-        }, { passive: true });
+        }, { passive: false });
       })();
     } else {
       targetElement.addEventListener('mousedown', () => {
