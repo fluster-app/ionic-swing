@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {SwingCardComponent} from './components/swing-card.component';
-import {SwingStackComponent} from './components/swing-stack.component';
+import {SwingCardDirective} from './directives/swing-card.directive';
+import {SwingStackDirective} from './directives/swing-stack.directive';
 
-export * from './components/swing-card.component';
-export * from './components/swing-stack.component';
+export * from './directives/swing-card.directive';
+export * from './directives/swing-stack.directive';
 
 export * from './interfaces/swing';
 
@@ -19,12 +19,12 @@ export * from './swing/utilities';
     CommonModule
   ],
   declarations: [
-    SwingCardComponent,
-    SwingStackComponent
+    SwingCardDirective,
+    SwingStackDirective
   ],
   exports: [
-    SwingCardComponent,
-    SwingStackComponent
+    SwingCardDirective,
+    SwingStackDirective
   ]
 })
 export class IonicSwingModule {

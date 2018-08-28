@@ -122,11 +122,11 @@
   "defaultProject": "ionic-swing",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "swing",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "swing"
     }
   }
 }

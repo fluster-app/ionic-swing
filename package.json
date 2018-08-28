@@ -1,6 +1,6 @@
 {
   "name": "ionic-swing",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
