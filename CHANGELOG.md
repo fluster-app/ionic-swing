@@ -1,3 +1,7 @@
+<a name="4.0.0"></a>
+## [4.0.0](https://github.com/peterpeterparker/ionic-swing/compare/v3.0.0...v4.0.0) (2018-11-17)
+* **breaking**: Upgrade to Angular v7
+
 <a name="3.0.0"></a>
 ## [3.0.0](https://github.com/peterpeterparker/ionic-swing/compare/v2.3.1...v3.0.0) (2018-08-28)
 * **breaking**: Refactor components to directives in order to be compatible with Ionic v4 (>= beta.5) and/or Typescript v2.9.2
