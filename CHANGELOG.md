@@ -1,3 +1,8 @@
+<a name="4.1.0"></a>
+## [4.1.0](https://github.com/peterpeterparker/ionic-swing/compare/v4.0.0...v4.1.0) (2018-12-18)
+* **features**: fork last swing.js features ([#10](https://github.com/fluster/ionic-swing/issues/10))
+* **lib**: update dependencies
+
 <a name="4.0.0"></a>
 ## [4.0.0](https://github.com/peterpeterparker/ionic-swing/compare/v3.0.0...v4.0.0) (2018-11-17)
 * **breaking**: Upgrade to Angular v7
