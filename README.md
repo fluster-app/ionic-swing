@@ -31,9 +31,9 @@ and add it to your imports:
 
 ### 2. To implement a card stack
 
-To implement a card stack, follow the example provided by angular2-swing
+To implement a card stack, follow the example provided by angular2-swing [https://github.com/ksachdeva/angular2-swing](https://github.com/ksachdeva/angular2-swing)
 
-See https://github.com/ksachdeva/angular2-swing
+Or you could find also another example in my mobile application [Fluster](https://fluster.io), see the following page and module [https://github.com/fluster/fluster-app/tree/master/src/app/pages/browse/items/items](https://github.com/fluster/fluster-app/tree/master/src/app/pages/browse/items/items)
 
 ### 3. ViewChild and ViewChildren in Ionic v4
 
