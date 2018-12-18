@@ -68,11 +68,14 @@ const appendToParent = (element) => {
   const parentNode = element.parentNode;
   const siblings = elementChildren(parentNode);
   const targetIndex = siblings.indexOf(element);
+  const appended = targetIndex + 1 !== siblings.length;
 
-  if (targetIndex + 1 !== siblings.length) {
+  if (appended) {
     parentNode.removeChild(element);
     parentNode.appendChild(element);
   }
+
+  return appended;
 };
 
 /**
@@ -207,6 +210,7 @@ const Card = (stack, targetElement) => {
   let throwDirectionToEventName;
   let throwOutDistance;
   let throwWhere;
+  let appendedDuringMouseDown;
 
   const construct = () => {
     card = {};
@@ -347,10 +351,16 @@ const Card = (stack, targetElement) => {
       })();
     } else {
       targetElement.addEventListener('mousedown', () => {
+        appendedDuringMouseDown = appendToParent(targetElement) || appendedDuringMouseDown;
         eventEmitter.trigger('panstart');
       }, { passive: true });
 
       targetElement.addEventListener('mouseup', () => {
+        if (appendedDuringMouseDown) {
+          targetElement.click();
+          appendedDuringMouseDown = false;
+        }
+
         if (isDraging && !isPanning) {
           eventEmitter.trigger('dragend', {
             target: targetElement
@@ -473,6 +483,7 @@ const Card = (stack, targetElement) => {
       lastThrow.direction = direction || computeDirection(fromX, fromY, config.allowedDirections);
 
       if (where === THROW_IN) {
+        appendToParent(targetElement);
         springThrowIn.setCurrentValue(0).setAtRest().setEndValue(1);
 
         eventEmitter.trigger('throwin', {
@@ -480,6 +491,7 @@ const Card = (stack, targetElement) => {
           throwDirection: lastThrow.direction
         });
       } else if (where === THROW_OUT) {
+        appendToParent(targetElement);
         isDraging = false;
         springThrowOut.setCurrentValue(0).setAtRest().setVelocity(100).setEndValue(1);
 
