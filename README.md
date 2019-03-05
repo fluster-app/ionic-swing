@@ -63,6 +63,14 @@ and add the following line to your `app.component.ts`
 
     import 'hammerjs';
 
+## Note regarding global
+
+If you would face the error `ReferenceError: global is not defined at ionic-swing.js` at runtime, this could be fixed by declaring the `window` to the global scope. To do so add you could add the following to your `polyfill.ts`:  
+
+```
+(window as any).global = window;
+```
+
 ## Development
 
 To generate the library using ng-packagr (https://github.com/dherges/ng-packagr)
