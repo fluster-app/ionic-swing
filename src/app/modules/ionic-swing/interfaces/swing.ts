@@ -87,12 +87,13 @@ export interface StackConfig {
      *
      * Element is considered to be thrown out when throwOutConfidence is equal to 1.
      *
-     * param {Number} offset Distance from the dragStart.
+     * param {Number} offsetX Distance from the dragStart.
+     * param {Number} offsetY Distance from the dragStart.
      * param {HTMLElement} element Element.
      * param {Number} throwOutConfidence config.throwOutConfidence
      * return {Boolean}
      */
-    isThrowOut?: (offset: number, element: HTMLElement, throwOutConfidence: number) => boolean;
+    isThrowOut?: (offsetX: number, offsetY: number, element: HTMLElement, throwOutConfidence: number) => boolean;
 
     /**
      * Returns a value between 0 and 1 indicating the completeness of the throw out condition.
