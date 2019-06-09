@@ -1,3 +1,11 @@
+<a name="4.1.1"></a>
+## [4.1.1](https://github.com/peterpeterparker/ionic-swing/compare/v4.1.0...v4.1.1) (2019-06-09)
+* **fix**: isThrowOut signature ([#13](https://github.com/fluster/ionic-swing/pull/13))
+
+### Kudos
+
+Thx [Simon Coope](https://github.com/sjcoope) for the PR 👍
+
 <a name="4.1.0"></a>
 ## [4.1.0](https://github.com/peterpeterparker/ionic-swing/compare/v4.0.0...v4.1.0) (2018-12-18)
 * **features**: fork last swing.js features ([#10](https://github.com/fluster/ionic-swing/issues/10))
