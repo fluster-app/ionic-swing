@@ -1,3 +1,5 @@
+**[NOT MAINTAINED]** This project is discontinued respectively I don't maintain it anymore.
+
 # ionic-swing
 
 ionic-swing is a fork of the following projects intended to add the swipeable cards capatibilies to Ionic (>= 2)
